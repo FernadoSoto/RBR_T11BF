@@ -3,15 +3,21 @@ package pe.edu.vg.app.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 @Setter
 @Getter
 @Entity
-@Table(name = "MENU")
+@Table(name = "Menu")
 public class Menu {
 
-    // Getters and Setters
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dish_id")
@@ -37,6 +43,8 @@ public class Menu {
     public Menu() {
     }
 
+    
+    
     // toString method
     @Override
     public String toString() {
