@@ -11,6 +11,7 @@ import pe.edu.vg.app.service.PersonService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/persons")
 public class PersonController {
