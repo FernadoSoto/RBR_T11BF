@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/menucategories")
+@RequestMapping("/api/menu-categories")
 public class MenuCategoryController {
 
     private final MenuCategoryService menuCategoryService;
@@ -31,8 +31,7 @@ public class MenuCategoryController {
     @GetMapping("/{id}")
     public ResponseEntity<MenuCategory> getMenuCategoryById(@PathVariable Long id) {
         Optional<MenuCategory> menuCategory = menuCategoryService.getMenuCategoryById(id);
-        return menuCategory.map(category -> new ResponseEntity<>(category, HttpStatus.OK))
-                           .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+        return menuCategory.map(value -> new ResponseEntity<>(value, HttpStatus.OK)).orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping
@@ -43,9 +42,9 @@ public class MenuCategoryController {
 
     @PutMapping("/{id}")
     public ResponseEntity<MenuCategory> updateMenuCategory(@PathVariable Long id, @RequestBody MenuCategory updatedMenuCategory) {
-        MenuCategory updatedCategory = menuCategoryService.updateMenuCategory(id, updatedMenuCategory);
-        if (updatedCategory != null) {
-            return new ResponseEntity<>(updatedCategory, HttpStatus.OK);
+        MenuCategory menuCategory = menuCategoryService.updateMenuCategory(id, updatedMenuCategory);
+        if (menuCategory != null) {
+            return new ResponseEntity<>(menuCategory, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
@@ -53,7 +52,11 @@ public class MenuCategoryController {
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMenuCategory(@PathVariable Long id) {
-        menuCategoryService.deleteMenuCategory(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        boolean deleted = menuCategoryService.deleteMenuCategory(id);
+        if (deleted) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }

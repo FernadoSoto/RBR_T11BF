@@ -6,43 +6,37 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
+
+@Data
 @Entity
 @Table(name = "Person")
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Person {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "PersonID")
-    private Long personId;
+    private Long personID;
 
-    @Column(name = "Name")
+    @Column(name = "Name", nullable = false)
     private String name;
 
-    @Column(name = "LastName")
+    @Column(name = "LastName", nullable = false)
     private String lastName;
 
-    @Column(name = "DocumentType")
+    @Column(name = "DocumentType", nullable = false)
     private String documentType;
 
-    @Column(name = "DocumentNumber")
+    @Column(name = "DocumentNumber", nullable = false)
     private String documentNumber;
 
-    @Column(name = "Phone")
+    @Column(name = "Phone", nullable = false)
     private String phone;
 
-    @Column(name = "Status")
-    private String status = "active";
+    @Column(name = "Status", nullable = false, columnDefinition = "NVARCHAR2(8) DEFAULT 'active'")
+    private String status;
 
-    @Column(name = "Role")
+    @Column(name = "Role", nullable = false)
     private String role;
 }
-

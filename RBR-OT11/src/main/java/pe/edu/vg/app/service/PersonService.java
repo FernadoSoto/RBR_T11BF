@@ -2,7 +2,6 @@ package pe.edu.vg.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import pe.edu.vg.app.model.Person;
 import pe.edu.vg.app.repository.PersonRepository;
 
@@ -32,21 +31,20 @@ public class PersonService {
     }
 
     public Person updatePerson(Long id, Person updatedPerson) {
-        Optional<Person> existingPersonOptional = personRepository.findById(id);
-        if (existingPersonOptional.isPresent()) {
-            Person existingPerson = existingPersonOptional.get();
-            existingPerson.setName(updatedPerson.getName());
-            existingPerson.setLastName(updatedPerson.getLastName());
-            // Actualiza los demás campos según sea necesario
-            return personRepository.save(existingPerson);
+        if (personRepository.existsById(id)) {
+            updatedPerson.setPersonID(id);
+            return personRepository.save(updatedPerson);
         } else {
-            // Manejo de error si no se encuentra la persona
-            return null;
+            return null; // or throw an exception
         }
     }
 
-    public void deletePerson(Long id) {
-        personRepository.deleteById(id);
+    public boolean deletePerson(Long id) {
+        if (personRepository.existsById(id)) {
+            personRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
-

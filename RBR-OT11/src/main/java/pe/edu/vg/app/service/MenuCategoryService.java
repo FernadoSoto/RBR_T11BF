@@ -36,12 +36,16 @@ public class MenuCategoryService {
             updatedMenuCategory.setCategoryID(id);
             return menuCategoryRepository.save(updatedMenuCategory);
         } else {
-            return null;
+            return null; // or throw an exception
         }
     }
 
-    public void deleteMenuCategory(Long id) {
-        menuCategoryRepository.deleteById(id);
+    public boolean deleteMenuCategory(Long id) {
+        if (menuCategoryRepository.existsById(id)) {
+            menuCategoryRepository.deleteById(id);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
-
