@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TableService } from '../../services/table.service';
 
@@ -9,10 +9,9 @@ import { TableService } from '../../services/table.service';
   templateUrl: './table-list.component.html',
   styleUrl: './table-list.component.css'
 })
-export class TableListComponent implements OnInit {
+export default class TableListComponent implements OnInit {
+  private tableService = inject(TableService);
   tables: any[] = [];
-
-  constructor(private tableService: TableService) {}
 
   ngOnInit(): void {
     this.tableService.getAllTables()
