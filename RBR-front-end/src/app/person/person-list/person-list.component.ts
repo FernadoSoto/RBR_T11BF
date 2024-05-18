@@ -1,5 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { PersonService } from '../services/person.service';
+import { PersonService } from '../../services/person.service';
 import { RouterModule } from '@angular/router';
 
 @Component({

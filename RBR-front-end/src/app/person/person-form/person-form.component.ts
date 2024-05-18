@@ -1,5 +1,4 @@
-import { routes } from './../app.routes';
-import { PersonService } from './../services/person.service';
+import { PersonService } from './../../services/person.service';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
@@ -12,6 +11,7 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './person-form.component.css'
 })
 export default class PersonFormComponent {
+  
     private fb = inject(FormBuilder);
     private router = inject(Router);
     private personService = inject(PersonService);
@@ -28,7 +28,7 @@ export default class PersonFormComponent {
       const person = this.form.value;
       this.personService.create(person)
       .subscribe(()=>{
-        this.router.navigate(['/']);
+        this.router.navigate(['/personList']);
       });
     }
 }

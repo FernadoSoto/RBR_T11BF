@@ -11,6 +11,7 @@ import pe.edu.vg.app.service.TableService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/tables")
 public class TableController {

@@ -11,6 +11,7 @@ import pe.edu.vg.app.service.MenuService;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/menus")
 public class MenuController {

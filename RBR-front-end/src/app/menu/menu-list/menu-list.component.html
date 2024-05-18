@@ -1,0 +1,28 @@
+<h1 class="mb-5">Lista de Menús</h1>
+
+<div class="text-end">
+    <button class="btn btn-primary" routerLink="/menuForm">
+        Nuevo Menú
+    </button>
+</div>
+
+<table class="table tabla-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Precio</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (menu of menus; track menu.dishID) {
+            <tr>
+                <td>{{ menu.dishName }}</td>
+                <td>{{ menu.description }}</td>
+                <td>{{ menu.price }}</td>
+                <td>{{ menu.status }}</td>
+            </tr>
+        }
+    </tbody>
+</table>
