@@ -13,16 +13,19 @@
         <th>Descripción</th>
         <th>Precio</th>
         <th>Estado</th>
+        <th>Categoría</th>
       </tr>
     </thead>
     <tbody>
-        @for (menu of menus; track menu.dishID) {
-            <tr>
-                <td>{{ menu.dishName }}</td>
-                <td>{{ menu.description }}</td>
-                <td>{{ menu.price }}</td>
-                <td>{{ menu.status }}</td>
-            </tr>
+        @for (menu of menus; track menu.dishID){
+        <tr>
+            <td>{{ menu.dishName }}</td>
+            <td>{{ menu.description }}</td>
+            <td>{{ menu.price }}</td>
+            <td>{{ menu.status }}</td>
+            <td>{{ getCategoryName(menu.categoryID) }}</td>
+        </tr>
         }
     </tbody>
 </table>
+

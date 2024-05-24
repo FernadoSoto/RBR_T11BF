@@ -1,0 +1,24 @@
+<h1 class="mb-5">Lista de Categorías de Menú</h1>
+
+<div class="text-end">
+    <button class="btn btn-primary" routerLink="/menuCategoryForm">
+        Nueva Categoría de Menú
+    </button>
+</div>
+
+<table class="table tabla-hover">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+        @for (category of categories; track category.categoryID) {
+            <tr>
+                <td>{{ category.categoryName }}</td>
+                <td>{{ category.status }}</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,21 @@
+<h2 class="mb-5">Agregar Nueva Categoría de Menú</h2>
+<div class="row row-cols-2 justify-content-center">
+    <form [formGroup]="form" (ngSubmit)="createMenuCategory()">
+        <div>
+            <div class="mb-3">
+                <label for="categoryName">Nombre de la Categoría:</label>
+                <input type="text" id="categoryName" placeholder="Nombre de la Categoría" class="form-control" formControlName="categoryName">
+            </div>
+            <div class="mb-3">
+                <label for="status">Estado:</label>
+                <select id="status" class="form-control" formControlName="status">
+                    <option value="active">Activo</option>
+                </select>
+            </div>
+            <div class="text-end">
+                <button type="button" routerLink="/menuCategoryList" class="btn btn-light mb-5">Cancelar</button>
+                <button type="submit" class="btn btn-primary ms-2 mb-5">Agregar Categoría de Menú</button>
+            </div>
+        </div>
+    </form>
+</div>

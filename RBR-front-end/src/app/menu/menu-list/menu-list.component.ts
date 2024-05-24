@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { RouterModule } from '@angular/router';
+import { MenuCategoryService } from '../../services/menuctgry.service';
 
 @Component({
   selector: 'app-menu-list',
@@ -10,14 +11,30 @@ import { RouterModule } from '@angular/router';
   styleUrl: './menu-list.component.css'
 })
 export default class MenuListComponent implements OnInit {
-  private menuService = inject(MenuService);
-
   menus: any[] = [];
+  categoriesMap: { [key: number]: string } = {};
+
+  constructor(
+    private menuService: MenuService,
+    private menuCategoryService: MenuCategoryService
+  ) {}
 
   ngOnInit(): void {
-    this.menuService.getAllMenus()
-      .subscribe((menus: any) => {
-        this.menus = menus;
+    // Fetch all menus
+    this.menuService.getAllMenus().subscribe((menus: any) => {
+      this.menus = menus;
+
+      // Fetch all categories and create a map for quick lookup
+      this.menuCategoryService.getAllMenuCategories().subscribe((categories: any) => {
+        categories.forEach((category: any) => {
+          this.categoriesMap[category.categoryID] = category.categoryName;
+        });
       });
+    });
+  }
+
+  getCategoryName(categoryID: number): string {
+    // Return the category name corresponding to the categoryID
+    return this.categoriesMap[categoryID] || 'Unknown Category';
   }
 }
