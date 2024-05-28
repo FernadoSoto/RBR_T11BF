@@ -1,34 +1,38 @@
 <h2 class="mb-5">Agregar Nuevo Menú</h2>
 <div class="row row-cols-2 justify-content-center">
-    <form [formGroup]="form" (ngSubmit)="createMenu()">
-        <div>
-            <h2>Agregar Nuevo Menú</h2>
-            <div class="mb-3">
-                <label for="dishName">Nombre del Plato:</label>
-                <input type="text" id="dishName" placeholder="Nombre del Plato" class="form-control" formControlName="dishName">
-            </div>
-            <div class="mb-3">
-                <label for="description">Descripción:</label>
-                <textarea id="description" placeholder="Descripción" class="form-control" formControlName="description"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="price">Precio:</label>
-                <input type="text" id="price" placeholder="Precio" class="form-control" formControlName="price">
-            </div>
-            <div class="mb-3">
-                <label for="status">Estado:</label>
-                <select id="status" class="form-control" formControlName="status">
-                    <option value="active">Activo</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label for="categoryID">Categoría:</label>
-                <input type="text" id="categoryID" placeholder="Categoría" class="form-control" formControlName="categoryID">
-            </div>
-            <div class="text-end">
-                <button type="button" routerLink="/menuList" class="btn btn-light mb-5">Cancelar</button>
-                <button type="submit" class="btn btn-primary ms-2 mb-5">Agregar Menú</button>
-            </div>
-        </div>
-    </form>
+  <form [formGroup]="form" (ngSubmit)="createMenu()">
+    <div>
+      <h2>Agregar Nuevo Menú</h2>
+      <div class="mb-3">
+        <label for="dishName">Nombre del Plato:</label>
+        <input type="text" id="dishName" placeholder="Nombre del Plato" class="form-control" formControlName="dishName">
+      </div>
+      <div class="mb-3">
+        <label for="description">Descripción:</label>
+        <textarea id="description" placeholder="Descripción" class="form-control" formControlName="description"></textarea>
+      </div>
+      <div class="mb-3">
+        <label for="price">Precio:</label>
+        <input type="text" id="price" placeholder="Precio" class="form-control" formControlName="price">
+      </div>
+      <div class="mb-3">
+        <label for="status">Estado:</label>
+        <select id="status" class="form-control" formControlName="status">
+          <option value="active">Activo</option>
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="categoryID">Categoría:</label>
+        <select id="categoryID" class="form-control" formControlName="categoryID">
+          <option *ngFor="let category of categories" [value]="category.id">
+            {{ category.name }}
+          </option>
+        </select>
+      </div>
+      <div class="text-end">
+        <button type="button" routerLink="/menuList" class="btn btn-light mb-5">Cancelar</button>
+        <button type="submit" class="btn btn-primary ms-2 mb-5">Agregar Menú</button>
+      </div>
+    </div>
+  </form>
 </div>

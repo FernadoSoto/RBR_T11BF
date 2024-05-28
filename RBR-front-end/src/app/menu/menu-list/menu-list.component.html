@@ -1,31 +1,34 @@
-<h1 class="mb-5">Lista de Menús</h1>
+<h1 class="mb-5">Lista de Platos</h1>
 
 <div class="text-end">
     <button class="btn btn-primary" routerLink="/menuForm">
-        Nuevo Menú
+        Nuevo Plato
     </button>
 </div>
 
 <table class="table tabla-hover">
     <thead>
-      <tr>
-        <th>Nombre</th>
-        <th>Descripción</th>
-        <th>Precio</th>
-        <th>Estado</th>
-        <th>Categoría</th>
-      </tr>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Estado</th>
+            <th>Categoría</th>
+            <th>Acciones</th>
+        </tr>
     </thead>
     <tbody>
-        @for (menu of menus; track menu.dishID){
+        @for (menu of menus; track menu.dishID) {
         <tr>
             <td>{{ menu.dishName }}</td>
             <td>{{ menu.description }}</td>
             <td>{{ menu.price }}</td>
             <td>{{ menu.status }}</td>
             <td>{{ getCategoryName(menu.categoryID) }}</td>
+            <td>
+                <button class="btn btn-danger" (click)="confirmDelete(menu)">Eliminar</button>
+            </td>
         </tr>
         }
     </tbody>
 </table>
-
