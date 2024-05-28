@@ -1,4 +1,4 @@
-<h2 class="mb-5 ">Person Form</h2>
+<h2 class="mb-5">Formulario de Persona</h2>
 <div class="row row-cols-2 justify-content-center">
     <form [formGroup]="form" (ngSubmit)="create()">
         <div>
@@ -13,20 +13,31 @@
             </div>
             <div class="mb-3">
                 <label for="documentType">Tipo de Documento:</label>
-                <input type="text" id="documentType" placeholder="T.Documento" class="form-control" formControlName="documentType">
+                <select id="documentType" class="form-control" formControlName="documentType">
+                    <option value="DNI">DNI</option>
+                    <option value="CE">CE</option>
+                </select>
             </div>
             <div class="mb-3">
                 <label for="documentNumber">Número de Documento:</label>
-                <input type="text" id="documentNumber" placeholder="N.Documento"class="form-control" formControlName="documentNumber">
+                <input type="text" id="documentNumber" placeholder="N.Documento" class="form-control" formControlName="documentNumber">
             </div>
             <div class="mb-3">
                 <label for="phone">Teléfono:</label>
                 <input type="text" id="phone" placeholder="N.Telefono" class="form-control" formControlName="phone">
             </div>
+            <div class="mb-3">
+                <label for="role">Rol:</label>
+                <select id="role" class="form-control" formControlName="role">
+                    <option value="Cliente">Cliente</option>
+                    <option value="Empleado">Empleado</option>
+                </select>
+            </div>
+            <input type="hidden" formControlName="status" value="active">
             <div class="text-end">
                 <button type="button" routerLink="/personList" class="btn btn-light mb-5">Cancelar</button>
                 <button type="submit" class="btn btn-primary ms-2 mb-5">Agregar Persona</button>
             </div>
-    </div>
+        </div>
     </form>
 </div>

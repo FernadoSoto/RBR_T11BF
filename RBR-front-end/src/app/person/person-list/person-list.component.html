@@ -26,6 +26,9 @@
             <td>{{ person.documentNumber }}</td>
             <td>{{ person.phone }}</td>
             <td>
+                <button class="btn btn-primary" [routerLink]="['/editPerson', person.personID]">
+                    Editar
+                </button>
                 <button class="btn btn-danger" (click)="confirmDelete(person.id)">
                     Eliminar
                 </button>

@@ -24,7 +24,9 @@ export default class PersonFormComponent {
     lastName: ['', [Validators.required]],
     documentType: ['', [Validators.required]],
     documentNumber: ['', [Validators.required]],
-    phone: [''],
+    phone: ['', [Validators.required]],
+    status: ['active', [Validators.required]],
+    role: ['', [Validators.required]]
   });
 
   create() {

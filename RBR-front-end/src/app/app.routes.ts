@@ -10,9 +10,13 @@ export const routes: Routes = [
         loadComponent: () => import('./person/person-form/person-form.component')
     },
     {
+        path: 'editPerson',
+        loadComponent: () => import('./person/person-edit/person-edit.component')
+    },
+    {
         path:'menuList',
         loadComponent: () => import('./menu/menu-list/menu-list.component')
-    },  
+    },
     {
         path:'menuForm',
         loadComponent: () => import('./menu/menu-form/menu-form.component')

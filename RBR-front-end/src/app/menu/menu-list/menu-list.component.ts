@@ -21,11 +21,9 @@ export default class MenuListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Fetch all menus
     this.menuService.getAllMenus().subscribe((menus: any) => {
       this.menus = menus;
 
-      // Fetch all categories and create a map for quick lookup
       this.menuCategoryService.getAllMenuCategories().subscribe((categories: any) => {
         categories.forEach((category: any) => {
           this.categoriesMap[category.categoryID] = category.categoryName;
@@ -35,7 +33,6 @@ export default class MenuListComponent implements OnInit {
   }
 
   getCategoryName(categoryID: number): string {
-    // Return the category name corresponding to the categoryID
     return this.categoriesMap[categoryID] || 'Buscando Categoria';
   }
 

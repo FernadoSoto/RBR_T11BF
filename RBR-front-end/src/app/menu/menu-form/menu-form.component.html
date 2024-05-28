@@ -23,11 +23,11 @@
       </div>
       <div class="mb-3">
         <label for="categoryID">Categoría:</label>
-        <select id="categoryID" class="form-control" formControlName="categoryID">
-          <option *ngFor="let category of categories" [value]="category.id">
-            {{ category.name }}
-          </option>
-        </select>
+          <select id="categoryID" class="form-control" formControlName="categoryID">
+            <option *ngFor="let category of categories" value="{{ category.id }}">
+              {{ category.name }}
+            </option>
+          </select>
       </div>
       <div class="text-end">
         <button type="button" routerLink="/menuList" class="btn btn-light mb-5">Cancelar</button>
